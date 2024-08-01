@@ -1,0 +1,8 @@
+2024-08-01 13:04:11,509:INFO:Starting data preprocessing
+2024-08-01 13:04:11,567:ERROR:Error during project execution: 'The target column is missing from the raw data'
+Traceback (most recent call last):
+  File "c:\Users\anoushka chatterjee\Desktop\project\scripts\main.py", line 19, in main
+    preprocess_data()
+  File "c:\Users\anoushka chatterjee\Desktop\project\scripts\data_preprocessing.py", line 17, in preprocess_data
+    raise KeyError("The target column is missing from the raw data")
+KeyError: 'The target column is missing from the raw data'
