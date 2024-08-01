@@ -1,0 +1,41 @@
+predictive_maintenance/
+│
+├── data/
+│   ├── raw/
+│   │   └── equipment_data.csv
+│   ├── processed/
+│   │   ├── train_data.csv
+│   │   ├── test_data.csv
+│   │   └── scaler.pkl
+│   └── external/
+│       └── external_data_source.csv
+│
+├── notebooks/
+│   ├── eda.ipynb
+│   └── feature_engineering.ipynb
+│
+├── scripts/
+│   ├── __init__.py
+│   ├── data_preprocessing.py
+│   ├── feature_engineering.py
+│   ├── model_training.py
+│   ├── model_evaluation.py
+│   └── main.py
+│
+├── models/
+│   └── random_forest_model.pkl
+│
+├── reports/
+│   └── evaluation_report.txt
+│
+├── logs/
+│   └── project.log
+│
+├── utils/
+│   ├── __init__.py
+│   ├── data_loader.py
+│   └── data_saver.py
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
