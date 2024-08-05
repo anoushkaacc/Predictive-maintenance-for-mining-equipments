@@ -1,17 +1,15 @@
-import sys
-from pathlib import Path
-
-# Ensure the project root is in the PYTHONPATH
-project_root = Path(__file__).resolve().parent.parent
-sys.path.append(str(project_root))
+# app/main.py
 
 import streamlit as st
-from app.components.sidebar import sidebar
-from app.components.main_view import main_view
+from .components.sidebar import sidebar
+from .components.main_view import main_view
+import logging
 
+logging.basicConfig(level=logging.DEBUG)
 def main():
     st.title("Predictive Maintenance Dashboard")
     data_file = sidebar()
+    logging.debug(f"Data file uploaded: {data_file}")
     main_view(data_file)
 
 if __name__ == "__main__":
