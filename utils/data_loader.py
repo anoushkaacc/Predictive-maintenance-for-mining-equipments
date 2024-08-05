@@ -1,27 +1,20 @@
+# data_loader.py
+
 import pandas as pd
+import os
 
-def load_csv(file_path):
+def load_data(file_path):
     """
-    Load a CSV file into a pandas DataFrame.
-    
+    Load data from a CSV file.
+
     Parameters:
-    file_path (str): Path to the CSV file.
-    
-    Returns:
-    pd.DataFrame: DataFrame containing the loaded data.
-    """
-    return pd.read_csv(file_path)
+    - file_path (str): The path to the CSV file.
 
-def load_processed_data():
-    """
-    Load the processed training and test data.
-    
     Returns:
-    tuple: X_train, X_test, y_train, y_test
+    - DataFrame: The loaded data.
     """
-    X_train = load_csv(r'C:\Users\anoushka chatterjee\Desktop\project\data\processed\train_data.csv')
-    X_test = load_csv(r'C:\Users\anoushka chatterjee\Desktop\project\data\processed\test_data.csv')
-    y_train = load_csv(r'C:\Users\anoushka chatterjee\Desktop\project\data\processed\train_labels.csv').values.ravel()
-    y_test = load_csv(r'C:\Users\anoushka chatterjee\Desktop\project\data\processed\test_labels.csv').values.ravel()
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"{file_path} does not exist.")
     
-    return X_train, X_test, y_train, y_test
+    data = pd.read_csv(file_path)
+    return data

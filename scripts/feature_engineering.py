@@ -7,43 +7,41 @@ import os
 
 def engineer_features():
     # Load preprocessed data
-    preprocessed_data_path = 'data/processed/preprocessed_data.csv'
+    preprocessed_data_path = os.path.join('data', 'processed', 'preprocessed_data.csv')
     data = pd.read_csv(preprocessed_data_path)
-    
-    # Debug: Print columns to verify target column existence
-    print("Columns in preprocessed data:", data.columns)
-    
-    # Ensure the target column exists
-    if 'target' not in data.columns:
-        raise KeyError("The target column is missing from the preprocessed data")
-    
-    # Feature engineering steps
-    # Example: Create new features, encode categorical variables, scale features, etc.
-    # Assuming 'target' is the column to predict and should be excluded from scaling
-    target = data['target']
-    features = data.drop('target', axis=1)
-    
-    # Scaling features
+
+    # Extract features and target
+    features = data.drop(columns=['failure', 'timestamp'])
+    target = data['failure']
+
+    # Scale features
     scaler = StandardScaler()
     scaled_features = scaler.fit_transform(features)
-    
-    # Create DataFrame with scaled features
-    scaled_data = pd.DataFrame(scaled_features, columns=features.columns)
-    scaled_data['target'] = target
-    
-    # Split into train and test sets (80% train, 20% test)
-    train_data = scaled_data.sample(frac=0.8, random_state=42)
-    test_data = scaled_data.drop(train_data.index)
-    
-    # Save processed data
-    os.makedirs('data/processed', exist_ok=True)
-    train_data.to_csv('data/processed/train_data.csv', index=False)
-    test_data.to_csv('data/processed/test_data.csv', index=False)
-    
-    # Save the scaler
-    os.makedirs('models', exist_ok=True)
-    joblib.dump(scaler, 'models/scaler.pkl')
-    print('Feature engineering completed and data saved.')
 
-if __name__ == '__main__':
+    # Save the scaler for future use
+    scaler_path = os.path.join('data', 'processed', 'scaler.pkl')
+    joblib.dump(scaler, scaler_path)
+
+    # Split data into training and test sets
+    train_size = int(0.8 * len(data))
+    train_features = scaled_features[:train_size]
+    train_target = target[:train_size]
+    test_features = scaled_features[train_size:]
+    test_target = target[train_size:]
+
+    # Save the processed data
+    train_data = pd.DataFrame(train_features, columns=features.columns)
+    train_data['failure'] = train_target.reset_index(drop=True)
+    test_data = pd.DataFrame(test_features, columns=features.columns)
+    test_data['failure'] = test_target.reset_index(drop=True)
+
+    train_data_path = os.path.join('data', 'processed', 'train_data.csv')
+    test_data_path = os.path.join('data', 'processed', 'test_data.csv')
+    
+    train_data.to_csv(train_data_path, index=False)
+    test_data.to_csv(test_data_path, index=False)
+
+    print(f"Train and test data saved to {train_data_path} and {test_data_path} respectively.")
+
+if __name__ == "__main__":
     engineer_features()

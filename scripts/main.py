@@ -1,12 +1,20 @@
-
-# main.py
-
 import logging
 import os
 from data_preprocessing import preprocess_data
 from feature_engineering import engineer_features
 from model_training import train_model
 from model_evaluation import evaluate_model
+
+
+def main():
+    preprocess_data()
+    engineer_features()
+    train_model()
+    evaluate_model()
+
+if __name__ == "__main__":
+    main()
+
 
 # Set up logging
 os.makedirs('logs', exist_ok=True)

@@ -1,41 +1,36 @@
+# model_evaluation.py
+
 import pandas as pd
+from sklearn.metrics import classification_report
 import joblib
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
+import os
 
-def load_data(test_data_path, test_labels_path):
-    X_test = pd.read_csv(test_data_path)
-    y_test = pd.read_csv(test_labels_path).values.ravel()  # Flatten the labels array
-    return X_test, y_test
+def evaluate_model():
+    # Load test data
+    test_data_path = os.path.join('data', 'processed', 'test_data.csv')
+    test_data = pd.read_csv(test_data_path)
 
-def load_model(model_path):
-    return joblib.load(model_path)
+    # Extract features and target
+    X_test = test_data.drop(columns=['failure'])
+    y_test = test_data['failure']
 
-def evaluate_model(model, X_test, y_test):
+    # Load the trained model
+    model_path = os.path.join('models', 'random_forest_model.pkl')
+    model = joblib.load(model_path)
+
+    # Make predictions
     y_pred = model.predict(X_test)
-    
-    accuracy = accuracy_score(y_test, y_pred)
-    conf_matrix = confusion_matrix(y_test, y_pred)
-    class_report = classification_report(y_test, y_pred)
-    
-    return accuracy, conf_matrix, class_report
 
-def save_evaluation_report(accuracy, conf_matrix, class_report, report_path):
+    # Evaluate the model
+    report = classification_report(y_test, y_pred)
+    print(report)
+
+    # Save the evaluation report
+    report_path = os.path.join('reports', 'evaluation_report.txt')
     with open(report_path, 'w') as f:
-        f.write(f"Accuracy: {accuracy}\n")
-        f.write(f"Confusion Matrix:\n{conf_matrix}\n")
-        f.write(f"Classification Report:\n{class_report}\n")
+        f.write(report)
+
     print(f"Evaluation report saved to {report_path}")
 
-def main():
-    test_data_path = r'C:\Users\anoushka chatterjee\Desktop\project\data\processed\test_data.csv'
-    test_labels_path = r'C:\Users\anoushka chatterjee\Desktop\project\data\processed\test_labels.csv'
-    model_path = r'C:\Users\anoushka chatterjee\Desktop\project\models\random_forest_model.pkl'
-    report_path = r'C:\Users\anoushka chatterjee\Desktop\project\reports\evaluation_report.txt'
-
-    X_test, y_test = load_data(test_data_path, test_labels_path)
-    model = load_model(model_path)
-    accuracy, conf_matrix, class_report = evaluate_model(model, X_test, y_test)
-    save_evaluation_report(accuracy, conf_matrix, class_report, report_path)
-
 if __name__ == "__main__":
-    main()
+    evaluate_model()

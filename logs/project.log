@@ -6,3 +6,12 @@ Traceback (most recent call last):
   File "c:\Users\anoushka chatterjee\Desktop\project\scripts\data_preprocessing.py", line 17, in preprocess_data
     raise KeyError("The target column is missing from the raw data")
 KeyError: 'The target column is missing from the raw data'
+2024-08-05 11:07:36,019:INFO:Starting data preprocessing
+2024-08-05 11:07:36,105:INFO:Data preprocessing completed
+2024-08-05 11:07:36,106:INFO:Starting feature engineering
+2024-08-05 11:07:36,190:INFO:Feature engineering completed
+2024-08-05 11:07:36,190:INFO:Starting model training
+2024-08-05 11:07:36,994:INFO:Model training completed
+2024-08-05 11:07:36,994:INFO:Starting model evaluation
+2024-08-05 11:07:37,081:INFO:Model evaluation completed
+2024-08-05 11:07:37,081:INFO:Project execution completed successfully
