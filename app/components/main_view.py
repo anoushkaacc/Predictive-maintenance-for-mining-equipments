@@ -1,6 +1,6 @@
 import streamlit as st
-from ..data_loader import load_data
-from ..data_visualization import plot_feature_correlations
+from app.data_loader import load_data
+from app.data_visualization import plot_feature_correlations
 def main_view(data_file):
     if data_file:
         data = load_data(data_file)

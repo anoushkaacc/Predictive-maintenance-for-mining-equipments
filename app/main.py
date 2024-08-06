@@ -1,8 +1,8 @@
 # app/main.py
 
 import streamlit as st
-from .components.sidebar import sidebar
-from .components.main_view import main_view
+from app.components.sidebar import sidebar
+from app.components.main_view import main_view
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
