@@ -1,8 +1,11 @@
 # app/main.py
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 import streamlit as st
-from app.components.sidebar import sidebar
-from app.components.main_view import main_view
+from components.sidebar import sidebar
+from components.main_view import main_view
 import logging
 
 logging.basicConfig(level=logging.DEBUG)
