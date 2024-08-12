@@ -64,25 +64,25 @@ Predictive maintenance involves using data analysis tools and techniques to dete
 1. Clone the repo
 
 2. install the requirements
-
+```bash
 pip install -r requirements.txt
-
+```
 3. jupyter notebook for Exploratory data analysis
-
+```bash
 jupyter notebook notebooks/eda.ipynb
-
+```
 4. train the model
-
+```bash
 python scripts/model_training.py
-
+```
 5. evaluate the model
-
+```bash
 python scripts/model_evaluation.py
-
+```
 6. make predictions
-
+```bash
 python scripts/main.py
-
+```
 ## Results
 
 The model used for predictive maintenance is a Random forest classifier. Random forest is chosen due to its robustness and ability to handle large datasets with high dimensionality. 
