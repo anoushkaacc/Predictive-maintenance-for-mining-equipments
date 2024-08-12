@@ -61,7 +61,7 @@ Predictive maintenance involves using data analysis tools and techniques to dete
 
 ## Running the project 
 
-1. Clone the repo
+1. Fork this and Clone your repo
 
 2. install the requirements
 ```bash
