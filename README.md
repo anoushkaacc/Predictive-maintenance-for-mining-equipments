@@ -90,4 +90,4 @@ The model's performance is evaluated using metrics such as accuracy, precision, 
 
 ## Acknowledgements
 
-This project was developed as part of internship training project under Southern Eastern CoalFields (SECL).
+This project was developed as part of internship training project under South Eastern CoalFields (SECL).
