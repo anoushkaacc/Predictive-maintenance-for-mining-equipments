@@ -1,5 +1,9 @@
 # Predictive Maintenance for Mining Equipment
 
+[![Created Badge](https://badges.pufler.dev/created/anoushkaacc/Predictive-maintenance-for-mining-equipments)](https://badges.pufler.dev/anoushkaacc/Predictive-maintenance-for-mining-equipments)
+[![Visits Badge](https://badges.pufler.dev/visits/anoushkaacc/Predictive-maintenance-for-mining-equipments)](https://badges.pufler.dev/visits/anoushkaacc/Predictive-maintenance-for-mining-equipments)
+[![Updated Badge](https://badges.pufler.dev/updated/anoushkaacc/Predictive-maintenance-for-mining-equipments)](https://badges.pufler.dev/anoushkaacc/Predictive-maintenance-for-mining-equipments)
+
 ## Project overview
 This project focuses on implementing a predictive maintenance system for mining equipment. By leveraging historical data, the model predicts potential failures before they occur, enabling proactive maintenance, reducing downtime, and improving operational efficiency.
 
@@ -7,7 +11,6 @@ This project focuses on implementing a predictive maintenance system for mining 
 Predictive maintenance involves using data analysis tools and techniques to detect anomalies in your operation and possible defects in equipment and processes so you can fix them before they result in failure. The goal is to predict when equipment failure might occur, and to prevent the occurrence of the failure by performing maintenance.
 
 ## Project structure:
-
 
 ### Description of Each Directory and File
 
